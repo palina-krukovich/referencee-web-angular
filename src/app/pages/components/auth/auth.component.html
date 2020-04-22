@@ -1,0 +1,48 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#sign-up-tab">Sign Up</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#sign-in-tab">Sign In</a>
+  </li>
+</ul>
+<div class="tab-content mt-3" style="width: 400px">
+  <div class="tab-pane fade show active w-100" id="sign-up-tab">
+    <div class="form-group d-flex flex-row flex-wrap">
+      <div *ngFor="let image of images; index as i" class="m-1">
+        <img *ngIf="image.id !== selectedImageId" src="{{ image.url }}" (click)="onSelectImage(image.id)"
+             style="cursor: pointer; padding: 5px" width="64" height="64">
+        <img *ngIf="image.id === selectedImageId" src="{{ image.url }}" (click)="onUnselectImage(image.id)"
+             style="cursor: pointer; padding: 5px; border: 2px solid black" width="64" height="64">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="signup-username">Username</label>
+      <input type="text" class="form-control" id="signup-username">
+    </div>
+    <div class="form-group">
+      <label for="signup-email">Email</label>
+      <input type="email" class="form-control" id="signup-email">
+    </div>
+    <div class="form-group">
+      <label for="signup-pass">Password</label>
+      <input type="password" class="form-control" id="signup-pass">
+    </div>
+    <div class="form-group">
+      <input type="submit" class="form-control btn btn-primary" value="Sign Up">
+    </div>
+  </div>
+  <div class="tab-pane fade" id="sign-in-tab">
+    <div class="form-group">
+      <label for="signin-email">Email</label>
+      <input type="email" class="form-control" id="signin-email">
+    </div>
+    <div class="form-group">
+      <label for="signin-pass">Password</label>
+      <input type="password" class="form-control" id="signin-pass">
+    </div>
+    <div class="form-group">
+      <input type="submit" class="form-control btn btn-primary" value="Sign In">
+    </div>
+  </div>
+</div>
