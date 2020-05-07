@@ -1,48 +1,50 @@
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#sign-up-tab">Sign Up</a>
+    <a class="nav-link active" data-toggle="tab" href="#sign-up-tab">{{ 'SIGN_UP' | translate }}</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#sign-in-tab">Sign In</a>
+    <a class="nav-link" data-toggle="tab" href="#sign-in-tab">{{ 'SIGN_IN' | translate }}</a>
   </li>
 </ul>
 <div class="tab-content mt-3" style="width: 400px">
   <div class="tab-pane fade show active w-100" id="sign-up-tab">
-    <div class="form-group d-flex flex-row flex-wrap">
-      <div *ngFor="let image of images; index as i" class="m-1">
-        <img *ngIf="image.id !== selectedImageId" src="{{ image.url }}" (click)="onSelectImage(image.id)"
-             style="cursor: pointer; padding: 5px" width="64" height="64">
-        <img *ngIf="image.id === selectedImageId" src="{{ image.url }}" (click)="onUnselectImage(image.id)"
-             style="cursor: pointer; padding: 5px; border: 2px solid black" width="64" height="64">
+    <app-select-picture (selectedImageURL)="onSelectImage($event)"></app-select-picture>
+    <div class="form-group">
+      <label for="signup-username">{{ 'USERNAME' | translate }}</label>
+      <input type="text" class="form-control" id="signup-username" #signUpUsername>
+    </div>
+    <div class="form-group">
+      <label for="signup-email">{{ 'EMAIL' | translate }}</label>
+      <input type="email" class="form-control" id="signup-email" #signUpEmail>
+    </div>
+    <div class="form-group">
+      <label for="signup-pass">{{ 'PASSWORD' | translate }}</label>
+      <input type="password" class="form-control" id="signup-pass" #signUpPassword>
+    </div>
+    <div class="form-group text-center">
+      <input *ngIf="!isLoading" type="submit" class="form-control btn btn-primary" value="{{ 'SIGN_UP' | translate }}"
+             (click)="onSignUp(signUpEmail.value, signUpUsername.value, signUpPassword.value)">
+      <div *ngIf="isLoading" class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="signup-username">Username</label>
-      <input type="text" class="form-control" id="signup-username">
-    </div>
-    <div class="form-group">
-      <label for="signup-email">Email</label>
-      <input type="email" class="form-control" id="signup-email">
-    </div>
-    <div class="form-group">
-      <label for="signup-pass">Password</label>
-      <input type="password" class="form-control" id="signup-pass">
-    </div>
-    <div class="form-group">
-      <input type="submit" class="form-control btn btn-primary" value="Sign Up">
     </div>
   </div>
   <div class="tab-pane fade" id="sign-in-tab">
     <div class="form-group">
-      <label for="signin-email">Email</label>
-      <input type="email" class="form-control" id="signin-email">
+      <label for="signin-email">{{ 'EMAIL' | translate }}</label>
+      <input type="email" class="form-control" id="signin-email" #signInEmail>
     </div>
     <div class="form-group">
-      <label for="signin-pass">Password</label>
-      <input type="password" class="form-control" id="signin-pass">
+      <label for="signin-pass">{{ 'PASSWORD' | translate }}</label>
+      <input type="password" class="form-control" id="signin-pass" #signInPassword>
     </div>
-    <div class="form-group">
-      <input type="submit" class="form-control btn btn-primary" value="Sign In">
+    <div class="form-group text-center">
+      <input *ngIf="!isLoading" type="submit" class="form-control btn btn-primary" value="{{ 'SIGN_IN' | translate }}"
+             (click)="onSignIn(signInEmail.value, signInPassword.value)">
+      <div *ngIf="isLoading" class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
     </div>
   </div>
 </div>
+

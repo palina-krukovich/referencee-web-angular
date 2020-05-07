@@ -3,11 +3,11 @@
     <app-sidebar></app-sidebar>
   </div>
   <div class="col p-4">
-    <h1 class="text-center pb-5">Upload new reference</h1>
+    <h1 class="text-center pb-5">{{ 'UPLOAD_NEW_REFERENCE' | translate }}</h1>
     <div class="align-items-center">
       <form class="d-flex flex-column justify-content-center align-items-center">
         <app-file formControlName="image"></app-file>
-        <button class="btn btn-primary">Load picture</button>
+        <button class="btn btn-primary">{{ 'LOAD_REFERENCE' | translate }}</button>
       </form>
     </div>
   </div>

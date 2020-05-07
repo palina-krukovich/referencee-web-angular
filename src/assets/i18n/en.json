@@ -1,0 +1,49 @@
+{
+  "APP_NAME": "Referencee",
+
+  "APP_DESCRIPTION": "Looking for something special to draw? Referencee offers you a solution.",
+  "APP_DESCRIPTION_ITEM_1": "500+ full body references",
+  "APP_DESCRIPTION_ITEM_2": "Male and female, clothed and nude, static and active",
+  "APP_DESCRIPTION_ITEM_3": "Drawing in Class Mode",
+  "APP_DESCRIPTION_ITEM_4": "Calendar for tracking your progress",
+  "APP_DESCRIPTION_ITEM_5": "The ability to upload your own references",
+
+  "SIGN_UP": "SIGN UP",
+  "SIGN_IN": "SIGN IN",
+  "SIGN_OUT": "SIGN OUT",
+
+  "USERNAME": "Username",
+  "EMAIL": "Email",
+  "PASSWORD": "Password",
+
+  "WARN_FILL_ALL_FIELDS": "Please, fill all the fields!",
+
+  "UPDATE_PROFILE": "UPDATE PROFILE",
+  "MY_CALENDAR": "MY CALENDAR",
+  "START_DRAWING": "START DRAWING",
+  "UPLOAD_NEW_REFERENCE": "UPLOAD NEW REFERENCE",
+
+  "TODAY": "Today",
+  "WEEK": "Week",
+  "MONTH": "Month",
+  "TOTAL": "Total",
+
+  "CLASS": "Class",
+  "CLASSES": "Classes",
+  "TIME": "Time",
+  "MINUTE": "min",
+  "HOUR": "h",
+
+  "GENDER": "Gender",
+  "MALE": "Male",
+  "FEMALE": "Female",
+  "CLOTHING": "Clothing",
+  "CLOTHED": "Clothed",
+  "NUDE": "Nude",
+  "POSE": "Pose",
+  "STATIC": "Static",
+  "ACTION": "Action",
+
+  "LOAD_REFERENCE": "Load reference",
+  "SELECT_FILE": "Select file"
+}

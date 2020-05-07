@@ -1,0 +1,8 @@
+<div class="form-group d-flex flex-row flex-wrap">
+  <div *ngFor="let image of images; index as i" class="m-1">
+    <img *ngIf="image.url !== localSelectedImageURL" src="{{ image.url }}" (click)="onSelectImage(image.url)"
+         style="cursor: pointer; padding: 5px" width="64" height="64">
+    <img *ngIf="image.url === localSelectedImageURL" src="{{ image.url }}" (click)="onUnselectImage()"
+         style="cursor: pointer; padding: 5px" class="img-thumbnail rounded-pill border-secondary" width="64" height="64">
+  </div>
+</div>

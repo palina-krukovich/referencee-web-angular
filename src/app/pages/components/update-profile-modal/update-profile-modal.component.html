@@ -1,0 +1,25 @@
+<div class="modal fade" id="updateProfileModal" tabindex="-1" role="dialog" aria-labelledby="updateProfileModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateProfileModalLabel">Update Profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onCloseModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <app-select-picture (selectedImageURL)="onSelectImage($event)"></app-select-picture>
+        </div>
+        <div class="form-group">
+          <label for="new-username">New Username</label>
+          <input type="text" class="form-control" value="{{ authService.displayName }}" id="new-username" #newUsername>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onCloseModal()">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="onUpdateProfile(newUsername.value)">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-guest',
   templateUrl: './guest.component.html',
 })
-export class GuestComponent implements OnInit {
+export class GuestComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  constructor(public translate: TranslateService) { }
 
 }

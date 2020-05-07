@@ -1,36 +1,83 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AuthService } from '../../../core/service/auth.service';
+import { Router } from '@angular/router';
+import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent {
 
-  images = [
-    { url: 'https://storage.cloud.google.com/referencee-web-storage/bear.png', id: 'img-bear' },
-    { url: 'https://storage.cloud.google.com/referencee-web-storage/fox.png', id: 'img-fox' },
-    { url: 'https://storage.cloud.google.com/referencee-web-storage/jellyfish.png', id: 'img-jellyfish' },
-    { url: 'https://storage.cloud.google.com/referencee-web-storage/lamb.png', id: 'img-lamb' },
-    { url: 'https://storage.cloud.google.com/referencee-web-storage/llama.png', id: 'img-llama' },
-    { url: 'https://storage.cloud.google.com/referencee-web-storage/octopus.png', id: 'img-octopus' },
-    { url: 'https://storage.cloud.google.com/referencee-web-storage/owl.png', id: 'img-owl' },
-    { url: 'https://storage.cloud.google.com/referencee-web-storage/rabbit.png', id: 'img-rabbit' },
-    { url: 'https://storage.cloud.google.com/referencee-web-storage/unicorn.png', id: 'img-unicorn' },
-    { url: 'https://storage.cloud.google.com/referencee-web-storage/whale.png', id: 'img-whale' }
-  ];
+  selectedImageURL: string;
+  warning: string;
+  isLoading = false;
 
-  selectedImageId = '';
-
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(
+    public authService: AuthService,
+    public router: Router,
+    public translate: TranslateService
+  ) {
+    this.translate.get('WARN_FILL_ALL_FIELDS').subscribe((text: string) => {
+      this.warning = text;
+    });
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.translate.get('WARN_FILL_ALL_FIELDS').subscribe((text: string) => {
+        this.warning = text;
+      });
+    });
   }
 
-  onSelectImage(id) {
-    this.selectedImageId = id;
+  onSelectImage(url: string) {
+    this.selectedImageURL = url;
   }
 
-  onUnselectImage(id) {
-    this.selectedImageId = '';
+  onSignIn(email, password) {
+    if (email === null || email === ''
+      || password === null || password === ''
+    ) {
+      alert(this.warning);
+      return;
+    }
+    this.isLoading = true;
+    this.authService.signIn(email, password).then(() => {
+      this.isLoading = false;
+      this.router.navigate(['calendar']);
+    }).catch((error) => {
+      this.isLoading = false;
+      alert(error.message);
+    });
+  }
+
+  onSignUp(email: string, username: string, password: string) {
+    if (email === null || email === ''
+      || username === null || username === ''
+      || password === null || password === ''
+      || this.selectedImageURL === null || this.selectedImageURL === ''
+    ) {
+      alert(this.warning);
+      return;
+    }
+    this.isLoading = true;
+    this.authService.signUp(email, password).then(() => {
+      this.authService.updatePhotoURL(this.selectedImageURL).then(() => {
+        this.authService.updateDisplayName(username).then(() => {
+          this.isLoading = false;
+          this.router.navigate(['calendar']).catch((error) => {
+            this.isLoading = false;
+            alert(error.message);
+          });
+        }).catch((error) => {
+          this.isLoading = false;
+          alert(error.message);
+        });
+      }).catch((error) => {
+        this.isLoading = false;
+        alert(error.message);
+      });
+    }).catch((error) => {
+      this.isLoading = false;
+      alert(error.message);
+    });
   }
 }
