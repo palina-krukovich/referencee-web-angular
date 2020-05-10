@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../../core/service/auth.service';
 import { Router } from '@angular/router';
 import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
+import {ApiService} from '../../../core/service/api.service';
 
 @Component({
   selector: 'app-auth',
@@ -11,11 +12,11 @@ export class AuthComponent {
 
   selectedImageURL: string;
   warning: string;
-  isLoading = false;
 
   constructor(
-    public authService: AuthService,
-    public router: Router,
+    private authService: AuthService,
+    private apiService: ApiService,
+    private router: Router,
     public translate: TranslateService
   ) {
     this.translate.get('WARN_FILL_ALL_FIELDS').subscribe((text: string) => {
@@ -39,14 +40,17 @@ export class AuthComponent {
       alert(this.warning);
       return;
     }
-    this.isLoading = true;
+
     this.authService.signIn(email, password).then(() => {
-      this.isLoading = false;
-      this.router.navigate(['calendar']);
-    }).catch((error) => {
-      this.isLoading = false;
-      alert(error.message);
-    });
+      this.apiService.isAdmin().then((isAdminQuery) => {
+        isAdminQuery.subscribe((isAdmin) => {
+          if (isAdmin) {
+            this.authService.setAdmin();
+          }
+          this.router.navigate(['calendar']);
+        });
+      });
+    }).catch((error) => alert(error.message));
   }
 
   onSignUp(email: string, username: string, password: string) {
@@ -58,26 +62,19 @@ export class AuthComponent {
       alert(this.warning);
       return;
     }
-    this.isLoading = true;
+
     this.authService.signUp(email, password).then(() => {
-      this.authService.updatePhotoURL(this.selectedImageURL).then(() => {
-        this.authService.updateDisplayName(username).then(() => {
-          this.isLoading = false;
-          this.router.navigate(['calendar']).catch((error) => {
-            this.isLoading = false;
-            alert(error.message);
-          });
-        }).catch((error) => {
-          this.isLoading = false;
-          alert(error.message);
+      this.authService.updatePhotoURL(this.selectedImageURL)
+        .catch((error) => alert(error.message))
+        .finally(() => {
+          this.authService.updateDisplayName(username)
+            .catch((error) => alert(error.message))
+            .finally(() => {
+              this.apiService.saveUser().then((saveQuery) => {
+                saveQuery.subscribe(() => this.router.navigate(['calendar']));
+              });
+            });
         });
-      }).catch((error) => {
-        this.isLoading = false;
-        alert(error.message);
-      });
-    }).catch((error) => {
-      this.isLoading = false;
-      alert(error.message);
-    });
+    }).catch((error) => alert(error.message));
   }
 }

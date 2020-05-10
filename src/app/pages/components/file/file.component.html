@@ -1,54 +1,12 @@
-<div class="d-flex flex-row justify-content-center align-items-center">
-  <div class="d-flex flex-column justify-content-center align-items-center m-5">
-    <input class="file-input" type="file" id="file-input" style="display: none">
-    <label for="file-input" class="btn btn-outline-primary">
-      {{ 'SELECT_FILE' | translate}}
-      <svg class="bi bi-cloud-upload" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path d="M4.887 6.2l-.964-.165A2.5 2.5 0 103.5 11H6v1H3.5a3.5 3.5 0 11.59-6.95 5.002 5.002 0 119.804 1.98A2.501 2.501 0 0113.5 12H10v-1h3.5a1.5 1.5 0 00.237-2.981L12.7 7.854l.216-1.028a4 4 0 10-7.843-1.587l-.185.96z"/>
-        <path fill-rule="evenodd" d="M5 8.854a.5.5 0 00.707 0L8 6.56l2.293 2.293A.5.5 0 1011 8.146L8.354 5.5a.5.5 0 00-.708 0L5 8.146a.5.5 0 000 .708z" clip-rule="evenodd"/>
-        <path fill-rule="evenodd" d="M8 6a.5.5 0 01.5.5v8a.5.5 0 01-1 0v-8A.5.5 0 018 6z" clip-rule="evenodd"/>
-      </svg>
-    </label>
-    <img src="https://storage.cloud.google.com/referencee-web-storage/3c2485209220092dcd094f262ba58150024c8656270fdf11f4e1f65888b078e3.jpg" alt="" id="result-image" class="img-fluid m-3" style="max-height: 200px">
-  </div>
-  <div class="m-5">
-    <div class="form-group">
-      <label class="font-weight-bold">{{ 'GENDER' | translate }}</label>
-      <br>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="gender-radio-male" name="genderRadio" class="custom-control-input">
-        <label class="custom-control-label" for="gender-radio-male">{{ 'MALE' | translate }}</label>
-      </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="gender-radio-female" name="genderRadio" class="custom-control-input">
-        <label class="custom-control-label" for="gender-radio-female">{{ 'FEMALE' | translate }}</label>
-      </div>
-    </div>
-    <hr>
-    <div class="form-group">
-      <label class="font-weight-bold">{{ 'CLOTHING' | translate }}</label>
-      <br>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="clothing-radio-clothed" name="clothingRadio" class="custom-control-input">
-        <label class="custom-control-label" for="clothing-radio-clothed">{{ 'CLOTHED' | translate }}</label>
-      </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="clothong-radio-nude" name="clothingRadio" class="custom-control-input">
-        <label class="custom-control-label" for="clothong-radio-nude">{{ 'NUDE' | translate }}</label>
-      </div>
-    </div>
-    <hr>
-    <div class="form-group">
-      <label class="font-weight-bold">{{ 'POSE' | translate }}</label>
-      <br>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="pose-radio-action" name="poseRadio" class="custom-control-input">
-        <label class="custom-control-label" for="pose-radio-action">{{ 'ACTION' | translate }}</label>
-      </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="pose-radio-static" name="poseRadio" class="custom-control-input">
-        <label class="custom-control-label" for="pose-radio-static">{{ 'STATIC' | translate }}</label>
-      </div>
-    </div>
-  </div>
+<div class="d-flex flex-column align-items-center justify-content-center">
+  <input class="file-input" type="file" id="file-input" style="display: none">
+  <label for="file-input" class="btn btn-outline-primary">
+    {{ 'SELECT_FILE' | translate}}
+    <svg class="bi bi-cloud-upload" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4.887 6.2l-.964-.165A2.5 2.5 0 103.5 11H6v1H3.5a3.5 3.5 0 11.59-6.95 5.002 5.002 0 119.804 1.98A2.501 2.501 0 0113.5 12H10v-1h3.5a1.5 1.5 0 00.237-2.981L12.7 7.854l.216-1.028a4 4 0 10-7.843-1.587l-.185.96z"/>
+      <path fill-rule="evenodd" d="M5 8.854a.5.5 0 00.707 0L8 6.56l2.293 2.293A.5.5 0 1011 8.146L8.354 5.5a.5.5 0 00-.708 0L5 8.146a.5.5 0 000 .708z" clip-rule="evenodd"/>
+      <path fill-rule="evenodd" d="M8 6a.5.5 0 01.5.5v8a.5.5 0 01-1 0v-8A.5.5 0 018 6z" clip-rule="evenodd"/>
+    </svg>
+  </label>
+  <img src="" alt="" id="result-image" class="img-fluid m-3" style="max-height: 200px">
 </div>

@@ -21,8 +21,9 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { SelectPictureComponent } from './pages/components/select-picture/select-picture.component';
 import { UpdateProfileModalComponent } from './pages/components/update-profile-modal/update-profile-modal.component';
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { GalleryComponent } from './pages/gallery/gallery.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -42,6 +43,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     FileComponent,
     SelectPictureComponent,
     UpdateProfileModalComponent,
+    GalleryComponent,
   ],
   imports: [
     BrowserModule,

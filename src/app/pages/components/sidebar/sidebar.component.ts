@@ -11,17 +11,17 @@ export class SidebarComponent {
 
   constructor(
     public authService: AuthService,
-    public router: Router,
+    private router: Router,
     public translate: TranslateService
   ) { }
 
-  onSignOut() {
+  public onSignOut() {
     this.authService.signOut().then(() => {
       this.router.navigate(['guest']);
     });
   }
 
-  onSidebarItemClicked(link: string) {
+  public onSidebarItemClicked(link: string) {
     this.router.navigate([link]);
   }
 }

@@ -8,6 +8,7 @@ import {DrawComponent} from './pages/draw/draw.component';
 import {UploadComponent} from './pages/upload/upload.component';
 import {DashboardComponent} from './pages/dashboard/dashboard.component';
 import {AdminGuard} from './core/guard/admin.guard';
+import {GalleryComponent} from './pages/gallery/gallery.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'calendar', component: CalendarComponent, canActivate: [AuthGuard] },
   { path: 'draw', component: DrawComponent, canActivate: [AuthGuard] },
   { path: 'upload', component: UploadComponent, canActivate: [AuthGuard] },
+  { path: 'gallery', component: GalleryComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AdminGuard] }
 ];
 

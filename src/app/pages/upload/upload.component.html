@@ -3,11 +3,62 @@
     <app-sidebar></app-sidebar>
   </div>
   <div class="col p-4">
-    <h1 class="text-center pb-5">{{ 'UPLOAD_NEW_REFERENCE' | translate }}</h1>
-    <div class="align-items-center">
-      <form class="d-flex flex-column justify-content-center align-items-center">
-        <app-file formControlName="image"></app-file>
-        <button class="btn btn-primary">{{ 'LOAD_REFERENCE' | translate }}</button>
+    <h1 class="text-center pb-4">
+      {{ 'UPLOAD_NEW_REFERENCE' | translate }}
+    </h1>
+    <div class="d-flex justify-content-center">
+      <form [formGroup]="formGroup"
+            (ngSubmit)="submit()"
+            class="d-flex flex-column justify-content-center align-items-center">
+        <div *ngIf="uploaded" class="alert alert-dismissible alert-success text-center ">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          {{ 'APPROVAL_MESSAGE' | translate }}
+        </div>
+        <div class="d-flex flex-row align-items-center">
+          <app-file formControlName="image"></app-file>
+          <div class="p-5">
+            <div class="form-group">
+              <p class="font-weight-bold">{{ 'GENDER' | translate }}</p>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input (change)="onSelectGender('male')" type="radio" id="gender-radio-male" name="genderRadio" value="male" class="custom-control-input">
+                <label class="custom-control-label" for="gender-radio-male">{{ 'MALE' | translate }}</label>
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input (change)="onSelectGender('female')" type="radio" id="gender-radio-female" name="genderRadio" value="female" class="custom-control-input">
+                <label class="custom-control-label" for="gender-radio-female">{{ 'FEMALE' | translate }}</label>
+              </div>
+            </div>
+            <hr>
+            <div class="form-group">
+              <p class="font-weight-bold">{{ 'CLOTHING' | translate }}</p>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input (change)="onSelectClothing('clothed')" type="radio" id="clothing-radio-clothed" name="clothingRadio" value="clothed" class="custom-control-input">
+                <label class="custom-control-label" for="clothing-radio-clothed">{{ 'CLOTHED' | translate }}</label>
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input (change)="onSelectClothing('nude')" type="radio" id="clothong-radio-nude" name="clothingRadio" value="nude" class="custom-control-input">
+                <label class="custom-control-label" for="clothong-radio-nude">{{ 'NUDE' | translate }}</label>
+              </div>
+            </div>
+            <hr>
+            <div class="form-group">
+              <p class="font-weight-bold">{{ 'POSE' | translate }}</p>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input (change)="onSelectPose('action')" type="radio" id="pose-radio-action" name="poseRadio" value="action" class="custom-control-input">
+                <label class="custom-control-label" for="pose-radio-action">{{ 'ACTION' | translate }}</label>
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input (change)="onSelectPose('static')" type="radio" id="pose-radio-static" name="poseRadio" value="static" class="custom-control-input">
+                <label class="custom-control-label" for="pose-radio-static">{{ 'STATIC' | translate }}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center">
+          <button class="btn btn-primary">
+            {{ 'LOAD_REFERENCE' | translate }}
+          </button>
+        </div>
       </form>
     </div>
   </div>

@@ -1,0 +1,14 @@
+<div class="row vh-100 m-0">
+  <div class="col-2 p-0">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="col p-4">
+    <div class="d-flex flex-row flex-wrap">
+      <div *ngFor="let reference of references" class="d-flex flex-column m-3 text-center">
+        <img src="{{reference.url}}" height="250">
+        <span *ngIf="reference.approved" class="badge badge-success rounded-0">{{ 'APPROVED' | translate }}</span>
+        <span *ngIf="!reference.approved" class="badge badge-danger rounded-0">{{ 'NOT_APPROVED' | translate }}</span>
+      </div>
+    </div>
+  </div>
+</div>

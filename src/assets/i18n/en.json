@@ -21,7 +21,9 @@
   "UPDATE_PROFILE": "UPDATE PROFILE",
   "MY_CALENDAR": "MY CALENDAR",
   "START_DRAWING": "START DRAWING",
-  "UPLOAD_NEW_REFERENCE": "UPLOAD NEW REFERENCE",
+  "UPLOAD_NEW_REFERENCE": "UPLOAD REFERENCE",
+  "MY_REFERENCES": "MY REFERENCES",
+  "ADMIN_DASHBOARD": "ADMIN DASHBOARD",
 
   "TODAY": "Today",
   "WEEK": "Week",
@@ -45,5 +47,8 @@
   "ACTION": "Action",
 
   "LOAD_REFERENCE": "Load reference",
-  "SELECT_FILE": "Select file"
+  "SELECT_FILE": "Select file",
+  "APPROVAL_MESSAGE": "The reference has been uploaded successfully. Pending approval by administrator, it may take up to several days.",
+  "APPROVED": "Approved",
+  "NOT_APPROVED": "Not approved"
 }
